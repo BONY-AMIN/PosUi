@@ -1,0 +1,125 @@
+$primary: #0b57d0;
+$secondary: #6f42c1;
+$enable-caret: false;
+$font-family-base: "Segoe UI", sans-serif;
+$font-size-base: 0.93rem;
+
+@import "~bootstrap/scss/bootstrap";
+@import "~bootstrap/scss/_variables";
+
+.nav-item {
+  .nav-link {
+    color: #0f0f0f !important;
+    font-weight: 500;
+  }
+}
+table{
+  border: 1px solid black !important;
+}
+th {
+  font-weight: 500 !important;
+  background:  #01b0f1 !important;
+}
+td{
+  padding: 0 10 0 10 !important;
+  margin: 0 !important;
+}
+tbody{
+  background: #4ee44e !important;
+}
+
+.table > :not(:first-child) {
+  border-top: 0;
+}
+
+.table-active {
+  border-left: 6px solid #0b57d0 !important;
+  //background-color: #d2e3fc;
+}
+
+.form-control:focus {
+  box-shadow: 0 0 0 1px #2684ff;
+  border-color: #2684ff;
+}
+
+.form-select:focus {
+  box-shadow: 0 0 0 1px #2684ff;
+  border-color: #2684ff;
+}
+
+button.btn.cancel::before {
+  font-family: fontAwesome;
+  content: "\f00d\00a0";
+}
+
+.fc-day-fri {
+  background-color: rgb(245, 214, 214);
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  font-size: 8px;
+}
+
+.break {
+  break-after: column !important;
+}
+
+.action-bar {
+  border: 1px solid rgb(0, 0, 0, 0.176);
+  color:#d2e3fc;
+  background: #01b0f1;
+}
+ .header{
+ background: #01b0f1 !important;
+ height: 5%;
+}
+.btncolor{
+  background:  #92d14e !important;
+}
+.headertextsize{
+  font-size: large;
+  font-weight: bold;
+  color: white !important;
+}
+
+  .btn-sm, .btn-group-sm > .btn {
+    --bs-btn-padding-y: 0.05rem;
+    --bs-btn-padding-x: 0.2rem;
+    --bs-btn-font-size: 0.7rem;
+    --bs-btn-border-radius: 0.15rem;
+}
+.actionalign{
+  text-align: center;
+}
+.cardbgcolor{
+  background: #01b0f1 !important;
+  padding: 15px;
+  margin-bottom: 10px;
+}
+
+label {
+  font-size: smaller;
+  color: 0f0f0f !important;
+}
+.labelcolor{
+  font-weight: bold;
+  color: #0f0f0f !important;
+}
+.labelleft{
+  font-size: medium;
+  color: #0f0f0f;
+  width: 100%;
+  height: 100%;
+  text-align: right;
+  line-height: 32px;
+  font-weight: bold;
+}
+.card{
+  border: 1px solid black !important;
+}
+.inputsmall{
+  height: 60%;
+  padding: 4%;
+}
