@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route,Navigate  } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 
 import TopNavigation from "./components/layout/TopNavigation";
@@ -46,7 +46,9 @@ const App = () => {
 
   return (
     <div>
-      {/* {token === null || token === "" || token === "Error" ?( */}
+       {token === null || token === "" || token === "Error" ? (
+        <Navigate to="/login" />
+      ) : (
         <div>
           <TopNavigation />
           <Container fluid>
@@ -90,10 +92,8 @@ const App = () => {
             </Row>
           </Container>
         </div>
-      {/* ) : (
-        //<Navigate to="/login" />
-        <Navigate to="/dashboard" />
-      )} */}
+      
+      )}
     </div>
   );
 };

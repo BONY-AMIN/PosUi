@@ -20,6 +20,8 @@ const TopNavigation = () => {
           <Image
             src="/logo.png"
             height="30"
+            placeholder="logo"
+            title="logo"
             className="d-inline-block align-top"
             alt="Pharmacy logo"
           />
@@ -279,7 +281,7 @@ const TopNavigation = () => {
               <NavDropdown.Item className="text-center">
                 {user?.fullName} <br />
                 <b>@{user?.userName}</b> <br />
-                {user?.email}
+                {user?.phoneNumber}
               </NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item as={Link} to="/changepassword">
