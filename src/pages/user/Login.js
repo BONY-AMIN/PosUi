@@ -38,6 +38,7 @@ const LogIn = () => {
       console.log(result);
       localStorage.setItem("token", result.access_Token);
       // fetching user
+      console.log(phoneNumber.value);
       fetch(process.env.REACT_APP_API_URL + "Auth/" + phoneNumber.value, {
         method: "GET",
         headers: {
