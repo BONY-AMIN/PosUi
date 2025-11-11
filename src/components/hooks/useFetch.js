@@ -10,7 +10,7 @@ const useFetch = () => {
 
   const sendHttpRequest = useCallback(
     async (url, method, body = null, action) => {
-      console.log(body);
+      console.log("URL:", url);
       setRes((prevState) => ({
         ...prevState,
         dataLoading: method === "GET" ? true : false,
@@ -28,7 +28,7 @@ const useFetch = () => {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         });
-        console.log(body);
+    
         if (!response.ok) {
           let promise = await response.json();
           // throw new Error(response.statusText);

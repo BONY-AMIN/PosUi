@@ -306,7 +306,7 @@ const Product = () => {
                 
                  <Form.Group as={Col}>
                     <Form.Label>Brand</Form.Label>
-                    <CategoryDD
+                    <Brand
                       onChange={(value, action) => {
                         setProduct({
                           ...product,

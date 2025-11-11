@@ -53,6 +53,23 @@ const ProductGroup = (props) => {
   );
 };
 
+const Product = (props) => {
+  const [isClearable, setIsClearable] = useState(false);
+  const [response] = useGetAll("DropDown/GetDropDownList?type=Product");
+
+  const arr = response.data.filter((item) => item.value === props.selected);
+
+  return (
+    <Select
+      {...props}
+      isClearable={() => setIsClearable(!isClearable)}
+      value={arr[0]}
+      options={response.data}
+      placeholder="Select Product"
+    />
+  );
+};
+
 const Dosage = (props) => {
   const [isClearable, setIsClearable] = useState(false);
   const [response] = useGetAll("DropDown/GetDropDownList?type=Dosage");
@@ -298,6 +315,7 @@ const Role = (props) => {
 
 export {
   ProductGroup,
+  Product,
   Company,
   ParentAccount,
   AccountType,

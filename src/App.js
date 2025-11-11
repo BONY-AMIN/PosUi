@@ -26,7 +26,9 @@ import Country from "./pages/settings/Country";
 import Supplier from "./pages/settings/Supplier";
 import Manufacturer from "./pages/settings/Manufacturer";
 import InventoryReceive from "./pages/purchase/InventoryReceive";
+import Purchase from "./pages/purchase/Purchase";
 import Sells from "./pages/sell/Sells";
+import Sale from "./pages/sell/Sale";
 library.add(fas, far);
 
 const App = () => {
@@ -82,7 +84,9 @@ const App = () => {
 
                   {/* purchase */}
                   <Route path="/inventoryreceive" element={<InventoryReceive />} />
+                  <Route path="/purchase" element={<Purchase />} />
                   <Route path="/sells" element={<Sells />} />
+                  <Route path="/sale" element={<Sale />} />
                   <Route path="/category" element={<Category />} />
                 
                   <Route path="/" element={<Dashboard />} />

@@ -53,6 +53,17 @@ const TopNavigation = () => {
                     icon="fa-solid fa-angle-right"
                     className="text-primary"
                   />{" "}
+                  Inventory
+                </NavDropdown.Item>
+                <NavDropdown.Item
+                  as={Link}
+                  to="/purchase"
+                  className="nav-link"
+                >
+                  <FontAwesomeIcon
+                    icon="fa-solid fa-angle-right"
+                    className="text-primary"
+                  />{" "}
                   Purchase
                 </NavDropdown.Item>
                                
@@ -83,6 +94,17 @@ const TopNavigation = () => {
                     className="text-primary"
                   />{" "}
                   Sells
+                </NavDropdown.Item>
+                <NavDropdown.Item
+                  as={Link}
+                  to="/sale"
+                  className="nav-link"
+                >
+                  <FontAwesomeIcon
+                    icon="fa-solid fa-angle-right"
+                    className="text-primary"
+                  />{" "}
+                  Sales
                 </NavDropdown.Item>
                
               </NavDropdown>
