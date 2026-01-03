@@ -231,14 +231,14 @@ const UnitSetup = () => {
                 <tbody>
                   {(res.dataLoading || isPending) && (
                     <tr>
-                      <td colSpan="2" className="text-center">
+                      <td colSpan="3" className="text-center">
                         <Spinner animation="border" variant="primary" />
                       </td>
                     </tr>
                   )}
                   {!res.dataLoading && res.data.length === 0 && (
                     <tr>
-                      <td colSpan="2" className="text-center">
+                      <td colSpan="3" className="text-center">
                         <b>No data found!</b>
                       </td>
                     </tr>

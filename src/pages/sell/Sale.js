@@ -18,7 +18,7 @@ import Actionbar from "../../components/layout/Actionbar";
 import useFetch from "../../components/hooks/useFetch";
 import { ToastContainer } from "react-toastify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Brand } from "../../components/DropDown";
+import { Product } from "../../components/DropDown";
 import { CSVLink } from "react-csv";
 const csvLink = createRef();
 
@@ -28,8 +28,8 @@ const Sale = () => {
   const [master, setMaster] = useState({
     remarks:"",
     totalDiscount:0,
-    sellDate: new Date().toISOString(),
-    sellDetails: [],
+    saleDate: new Date().toISOString(),
+    saleDetails: [],
   });
 
   const [rowdata, setRowdata] = useState({
@@ -44,7 +44,7 @@ const Sale = () => {
    totalNewRate:''
   });
   const [rowdataList, setRowDataList] = useState([]);
-  const [sellDetails, setInputList] = useState([]);
+  const [saleDetails, setInputList] = useState([]);
   const [searchCriteria, setSearchCriteria] = useState({
     pageIndex: 1,
     pageSize: 10,
@@ -55,17 +55,17 @@ const Sale = () => {
   const [reqResponse, saveData] = useFetch();
   const [, deleteData] = useFetch();
 
-  const getAllSells = useCallback(() => {
+  const getAllSales = useCallback(() => {
     setValidated(false);
     getData(
-      "Sell?" + new URLSearchParams(searchCriteria),
+      "Sale?" + new URLSearchParams(searchCriteria),
       "GET"
     );
   }, [getData, searchCriteria]);
 
   useEffect(() => {
-    getAllSells();
-  }, [getAllSells]);
+    getAllSales();
+  }, [getAllSales]);
 
   const getExcelData = () => {
     setSearchCriteria({ ...searchCriteria, excelExport: true });
@@ -95,7 +95,7 @@ const Sale = () => {
   };
   const handleChange = (e, index) => {
     const { name, value } = e.target;
-    let list = [...sellDetails];
+    let list = [...saleDetails];
     list[index][name] = value;
     // if (name === "receiveQuantity" || name === "bonusQuantity"|| name === "unitPrice"){
     //   list[index]["newRate"] =
@@ -131,7 +131,7 @@ const Sale = () => {
     return Number(sum) - Number(discount);
   };
  
-  const saveSells = (e) => {
+  const saveSales = (e) => {
     e.preventDefault();
     const form = e.currentTarget;
     if (form.checkValidity() === false) {
@@ -139,17 +139,17 @@ const Sale = () => {
       setValidated(true);
       return;
     }
-    master.sellDetails = rowdataList;
+    master.saleDetails = rowdataList;
     const methodType = master.id ? "PUT" : "POST";
-    saveData("Sell", methodType, master, getAllSells);
+    saveData("Sale", methodType, master, getAllSales);
   };
  
   const removeMasterRowClick = (id) => {
     console.log(id);
     deleteData(
-      "Sell/" + id,
+      "Sale/" + id,
       "DELETE",
-      getAllSells
+      getAllSales
     );
   };
 
@@ -179,8 +179,8 @@ const Sale = () => {
     setRowDataList([
       ...rowdataList,
       {
-        brandId: rowdata.brandId,
-        brandName: rowdata.brandName,
+        productId: rowdata.productId,
+        productName: rowdata.productName,
         quantity: rowdata.quantity,
         discount:rowdata.discount,
         discountAmt:rowdata.discountAmt,
@@ -192,13 +192,13 @@ const Sale = () => {
     ]);
   };
   const removeRowClick = (index) => {
-    const list = [...sellDetails];
+    const list = [...saleDetails];
     list.splice(index, 1);
     setInputList(list);
   };
 
   const headers = [
-    { label: "Sell Date", key: "sellDate" },
+    { label: "Sale Date", key: "saleDate" },
     { label: "Supplier", key: "supplierName" },
   ];
 
@@ -210,7 +210,7 @@ const Sale = () => {
             setMaster({ 
             remarks:"",
             totalDiscount:0,
-            sellDate: new Date().toISOString(),
+            saleDate: new Date().toISOString(),
             });
             setInputList([{}]);
             setShowCanvas(true);
@@ -273,13 +273,13 @@ const Sale = () => {
                     <thead>
                       <tr>
                        
-                        <th>SellNo</th>
+                        <th>SaleNo</th>
                         <th>Quantity</th>
                         <th>Rate</th>
                         <th>New Rate</th>
                         <th>Total Amount</th>
-                        <th>Sell By</th>
-                        {/* <th>Sell Date</th> */}
+                        <th>Sale By</th>
+                        {/* <th>Sale Date</th> */}
                       </tr>
                     </thead>
                     <tbody>
@@ -302,31 +302,31 @@ const Sale = () => {
                           key={index}
                           onClick={() => {
                             setMaster(item);
-                            setInputList(item.sellDetails);
+                            setInputList(item.saleDetails);
                           }}
                           className={
                             item.id === master.id ? "table-active" : ""
                           }
                         >
                          
-                          <td>{item.sellNo}</td>
+                          <td>{item.saleNo}</td>
                          
-                          <td>{item.sellDetails
+                          <td>{item.saleDetails
                               .reduce((total, ele) => {
                                 return (total += ele.quantity);
                               }, 0)
                               .toLocaleString()}</td>
-                          <td>{item.sellDetails
+                          <td>{item.saleDetails
                               .reduce((total, ele) => {
                                 return (total += ele.unitPrice);
                               }, 0)
                               .toLocaleString()}</td>
-                          <td>{item.sellDetails
+                          <td>{item.saleDetails
                               .reduce((total, ele) => {
                                 return (total +=ele.newRate);
                               }, 0)
                               .toLocaleString()}</td>
-                               <td>{item.sellDetails
+                               <td>{item.saleDetails
                               .reduce((total, ele) => {
                                 return (total +=ele.newRate * ele.quantity);
                               }, 0)
@@ -358,7 +358,7 @@ const Sale = () => {
                 </Card.Body>
               </Card>
             </Col>
-            {master.sellNo?(<Col sm="5">
+            {master.saleNo?(<Col sm="5">
             <Card>
               <Card.Body>
                 <Row className="mb-2">
@@ -374,9 +374,9 @@ const Sale = () => {
                   </Col>
                   <Col align="right">
                     <div className="me-2 mt-2">
-                      <h3>Sell No</h3>
-                      {master.sellNo && (
-                        <h5># {master.sellNo}</h5>
+                      <h3>Sale No</h3>
+                      {master.saleNo && (
+                        <h5># {master.saleNo}</h5>
                       )}
                     </div>
                   </Col>
@@ -401,9 +401,9 @@ const Sale = () => {
                     <Table responsive borderless>
                       <tbody align="right">
                         <tr>
-                          <td>Sell Date :</td>
-                          {master.sellDate && (
-                            <td>{master.sellDate.split("T")[0]}</td>
+                          <td>Sale Date :</td>
+                          {master.saleDate && (
+                            <td>{master.saleDate.split("T")[0]}</td>
                           )}
                         </tr>
                       </tbody>
@@ -422,9 +422,9 @@ const Sale = () => {
                      
                     </tr>
                   </thead>
-                  {master.sellDetails && (
+                  {master.saleDetails && (
                     <tbody>
-                      {master.sellDetails.map((item, index) => (
+                      {master.saleDetails.map((item, index) => (
                         <tr key={index}>
                           <td>{item.brandName}</td>
                           <td>{item.quantity}</td>
@@ -442,7 +442,7 @@ const Sale = () => {
                           Total :
                         </td>
                         <td>
-                          {master.sellDetails
+                          {master.saleDetails
                             .reduce((total, iterator) => {
                               return (total +=
                                 iterator.quantity * iterator.newRate);
@@ -480,17 +480,17 @@ const Sale = () => {
               <Form
                 noValidate
                 validated={validated}
-                onSubmit={saveSells}
+                onSubmit={saveSales}
                 method="POST"
               >
                 <Row className="mb-2">
                   <Form.Group as={Col} sm="2">
-                    <Form.Label>Sell Date</Form.Label>
+                    <Form.Label>Sale Date</Form.Label>
                     <Form.Control
                       onChange={(e) => handleMaster(e)}
                       type="date"
-                      name="sellDate"
-                      value={master.sellDate.split("T")[0]}
+                      name="saleDate"
+                      value={master.saleDate.split("T")[0]}
                     />
                   </Form.Group>
 
@@ -509,20 +509,20 @@ const Sale = () => {
                  <Form.Group className="col-md-2" as={Col}>
                                  
                     <Form.Label>Product</Form.Label>
-                      <Brand 
+                      <Product 
                         onChange={(value, action) => {
                           setRowdata({
                             ...rowdata,
                             [action.name]: value ? value.value : null,
-                          ['brandName']:value ? value.label : null,
+                          ['productName']:value ? value.label : null,
                           ['vat']:value ? value.vat : null,
                           ['balance']:value ? value.balance : null,
                           
                           });
                         
                         }}
-                        name="brandId"
-                        selected={rowdata.brandId}
+                        name="productId"
+                        selected={rowdata.productId}
                       />
                            </Form.Group>
                               <Form.Group as={Col}>

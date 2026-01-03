@@ -10,8 +10,7 @@ import {
   Nav,
   InputGroup,
   Offcanvas,
-  Modal,
-  FormGroup,
+  Modal
 } from "react-bootstrap";
 import { toast } from "react-toastify";
 
@@ -168,8 +167,8 @@ const Purchase = () => {
     setRowDataList([
       ...rowdataList,
       {
-        brandId: rowdata.brandId,
-        brandName: rowdata.brandName,
+        productId: rowdata.productId,
+        productName: rowdata.productName,
         orderQuantity: rowdata.orderQuantity,
         receiveQuantity: rowdata.receiveQuantity,
         bonusQuantity: rowdata.bonusQuantity,
@@ -296,6 +295,7 @@ const Purchase = () => {
   };
 
   const savePurchase = (e) => {
+    console.log("savePurchase");
     e.preventDefault();
     const form = e.currentTarget;
     if (form.checkValidity() === false) {
@@ -324,7 +324,7 @@ const Purchase = () => {
     setInputList([
       ...purchaseDetails,
       {
-        brandId: "",
+        productId: "",
         receiveQuantity: 0,
         bonusQuantity: 0,
         orderQuantity: 0,
@@ -482,7 +482,7 @@ const Purchase = () => {
                           <td>{item.supplierName}</td>
                           <td>{item.supplierInvoiceNo}</td>
                           <td>{item.deliveryChalanNo}</td>
-                          <td>{item.inventoryNo}</td>
+                          <td>{item.invoiceNo}</td>
                           {/* <td>{item.purchaseDetails
                               .reduce((total, ele) => {
                                 return (total += ele.receivedQuantity);
@@ -922,7 +922,7 @@ const Purchase = () => {
                       <Row className="mb-1">
                          <InputGroup>
                           <Form.Group as={Col} className="col-md-11">
-                            <Brand
+                            <Product
                               onChange={(value, action) => {
                                 setRowdata({
                                   ...rowdata,
@@ -932,8 +932,8 @@ const Purchase = () => {
                                   ["balance"]: value ? value.balance : null,
                                 });
                               }}
-                              name="brandId"
-                              selected={rowdata.brandId}
+                              name="productId"
+                              selected={rowdata.productId}
                             />
                           </Form.Group>
                           <Button variant="outline-primary" className="btncolor" onClick={handleShow}>

@@ -163,7 +163,7 @@ const Brand = (props) => {
       isClearable={() => setIsClearable(!isClearable)}
       value={arr[0]}
       options={response.data}
-      placeholder="Product"
+      placeholder="Select Brand"
     />
   );
 };
