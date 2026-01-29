@@ -261,14 +261,14 @@ import {
                   <tbody>
                     {res.dataLoading && (
                       <tr>
-                        <td colSpan="4" className="text-center">
+                        <td colSpan="5" className="text-center">
                           <Spinner animation="border" variant="primary" />
                         </td>
                       </tr>
                     )}
                     {!res.dataLoading && res.data.length === 0 && (
                       <tr>
-                        <td colSpan="4" className="text-center">
+                        <td colSpan="5" className="text-center">
                           <b>No data found!</b>
                         </td>
                       </tr>

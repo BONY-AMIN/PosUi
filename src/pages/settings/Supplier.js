@@ -129,7 +129,7 @@ import {
                     <Col sm="2" className="mb-1">
                       <Form.Label className="labelleft">Name</Form.Label>
                     </Col>
-                    <Col sm="7" className="mb-1">
+                    <Col sm="6" className="mb-1">
                       <Form.Control
                         onChange={(e) => handleChange(e)}
                         type="text"
@@ -142,7 +142,7 @@ import {
   
                       <Form.Label className="labelleft">Country</Form.Label>
                     </Col>
-                    <Col sm="2" className="mb-1">
+                    <Col sm="3" className="mb-1">
                       <OriginCountry
                         onChange={(value, action) => {
                           setSupplier({
